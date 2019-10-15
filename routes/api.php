@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use App\Article;
+use App\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,11 +16,23 @@ use App\Article;
 */
 
 
-Route::get('/article', 'articles_controller@index');
-Route::get('/article/{id}','articles_controller@show');
-Route::post('article', 'articles_controller@store');
-Route::patch('article/{id}', 'articles_controller@update');
-Route::delete('article/{id}', 'articles_controller@delete');
+
+
+
+
+Route::post('login', 'UserController@login');
+Route::post('register', 'UserController@register');
+
+
+Route::group(['middleware' => 'auth:api'], function(){
+
+    Route::get('/article', 'articles_controller@index');
+    Route::get('/article/{id}','articles_controller@show');
+    Route::post('article', 'articles_controller@store');
+    Route::patch('article/{id}', 'articles_controller@update');
+    Route::delete('article/{id}', 'articles_controller@delete');
+
+});
 
 // Route::get('articles/{id}', function($id) {
 //     return Articles::find($id);

@@ -5,11 +5,14 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
     use Notifiable;
-
+    
+    //Makes it possible to generate bearer tokens in controller scripts
+    use Notifiable, HasApiTokens;
     /**
      * The attributes that are mass assignable.
      *
@@ -33,7 +36,9 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    
+    
+     // protected $casts = [
+    //     'email_verified_at' => 'datetime',
+    // ];
 }
