@@ -13,8 +13,8 @@ class Articles extends Migration
      */
     public function up()
     {
-        Schema::create('Articles', function (Blueprint $table) {
-            $table->integer('user-id');
+        Schema::create('articles', function (Blueprint $table) {
+            $table->increments('user-id');
             $table->string('title');
             $table->text('article');
             $table->timestamp('created_at')->nullablle();

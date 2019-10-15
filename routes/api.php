@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-use App\Articles;
+use App\Article;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +15,15 @@ use App\Articles;
 */
 
 
-Route::get('/articles', 'articles_controller@Get_Articles');
-Route::post('/articles/store','articles_controller@store');
-Route::patch('/articles/{article}','articles_controller@update');
+Route::get('/article', 'articles_controller@index');
+Route::get('/article/{id}','articles_controller@show');
+Route::post('article/{id}', 'articles_controller@store');
+Route::put('article/{id}', 'articles_controller@update');
+Route::delete('article/{id}', 'articles_controller@delete');
+
+// Route::get('articles/{id}', function($id) {
+//     return Articles::find($id);
+// });
+
+
+//Route::resource();
