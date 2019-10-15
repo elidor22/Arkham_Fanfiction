@@ -17,8 +17,8 @@ use App\Article;
 
 Route::get('/article', 'articles_controller@index');
 Route::get('/article/{id}','articles_controller@show');
-Route::post('article/{id}', 'articles_controller@store');
-Route::put('article/{id}', 'articles_controller@update');
+Route::post('article', 'articles_controller@store');
+Route::patch('article/{id}', 'articles_controller@update');
 Route::delete('article/{id}', 'articles_controller@delete');
 
 // Route::get('articles/{id}', function($id) {
