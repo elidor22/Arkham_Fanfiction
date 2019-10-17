@@ -26,8 +26,8 @@ class articles_controller extends Controller
     {
         $article = Article::findOrFail($id);
         $article->update($request->all());
-
         return $article;
+        
     }
 
     public function delete(Request $request, $id)

@@ -32,6 +32,8 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::patch('article/{id}', 'articles_controller@update');
     Route::delete('article/{id}', 'articles_controller@delete');
 
+    //Route::match([ 'patch'], '/article/{id}', 'articles_controller@update');
+
 });
 
 // Route::get('articles/{id}', function($id) {
