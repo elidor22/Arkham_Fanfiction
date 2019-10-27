@@ -14,11 +14,11 @@ class Articles extends Migration
     public function up()
     {
         Schema::create('articles', function (Blueprint $table) {
-            $table->increments('user-id');
+            $table->integer('user_id');
             $table->string('title');
             $table->text('article');
             $table->timestamp('created_at')->nullablle();
-            $table->string('password');
+            $table->string('updated_at');
         });
     }
 

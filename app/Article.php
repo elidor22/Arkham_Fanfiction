@@ -3,10 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Article extends Model
+class Article extends Authenticatable
 {
-    protected $fillable = ['id', 'title', 'article'];
+    protected $fillable = [  'user_id','title', 'article', 'cover_image'];
 
     protected $hidden = ['created_at', 'updated_at'];
 

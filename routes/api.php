@@ -27,10 +27,11 @@ Route::post('register', 'UserController@register');
 Route::group(['middleware' => 'auth:api'], function(){
 
     Route::get('/article', 'articles_controller@index');
-    Route::get('/article/{id}','articles_controller@show');
+    Route::get('/article/specific','articles_controller@show');
     Route::post('article', 'articles_controller@store');
-    Route::patch('article/{id}', 'articles_controller@update');
-    Route::delete('article/{id}', 'articles_controller@delete');
+    Route::post('article/upload', 'articles_controller@file_upload');
+    Route::patch('article', 'articles_controller@update');
+    Route::delete('article/delete', 'articles_controller@delete');
 
     //Route::match([ 'patch'], '/article/{id}', 'articles_controller@update');
 
