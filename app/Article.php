@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Article extends Authenticatable
 {
-    protected $fillable = [  'user_id','title', 'article'];
+    protected $fillable = [  'user_id','title', 'article', 'cover_image'];
 
     protected $hidden = ['created_at', 'updated_at'];
 

@@ -52,7 +52,6 @@ class articles_controller extends Controller
         //Find if the conditions are met then updates the information
         Article::where('user_id', auth()->user()->id)->where('title', $title)
         ->update($article);
-       // $article->update($article);
         return $article;
         
     }
@@ -63,9 +62,33 @@ class articles_controller extends Controller
         $title = $request->title;
         $article = Article::where('user_id', $user_id)
         ->where('title', $title);
-        $article->delete($article);
+        $article->delete();
 
         return 204;
+    }
+
+    public function file_upload(Request $request){
+         // Handle File Upload
+         if($request->hasFile('cover_image')){
+            // Get filename with the extension
+            $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('cover_image')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore= $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'noimage.jpg';
+        }
+        return $fileNameToStore;
+
+     /*    $article = new Article;
+        $article->cover_image = $fileNameToStore;
+        $article->save(); */
+
     }
 }
 
